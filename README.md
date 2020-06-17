@@ -9,3 +9,5 @@ Send notification when battery falls below critical level.
 5. `$ systemctl enable bat-notify && systemctl start bat-notify`
 
 ## Screenshots
+![](screenshot/10per.png)\\
+![](screenshot/20per.png)
