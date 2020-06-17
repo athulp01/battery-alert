@@ -42,5 +42,4 @@ fn monitor() {
 
 fn main() {
     monitor();
-    send_notif("Battery is low");
 }
