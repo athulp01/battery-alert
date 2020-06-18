@@ -21,21 +21,22 @@ fn monitor() {
     let mut alarm_10_per = false;
     let mut alarm_20_per = false;
 
-    send_notif("Battery Low ! 20% remaining");
     loop {
         let status = fs::read_to_string("/sys/class/power_supply/BAT0/capacity")
             .expect("Cannot read battery status file");
         let charge_rem: u8 = status.trim().parse().unwrap();
-        if charge_rem > 20 {
-            alarm_10_per = false;
-            alarm_20_per = false;
-        } else if charge_rem <= 20 && alarm_20_per == false {
+
+        if charge_rem <= 20 && alarm_20_per == false {
             send_notif("Battery Low ! 20% remaining");
             alarm_20_per = true;
         } else if charge_rem <= 10 && alarm_10_per == false {
             send_notif("Battery critically low!! 10% remaining");
             alarm_10_per = true;
         }
+
+        if charge_rem > 10 { alarm_10_per = false; }
+        if charge_rem > 20 { alarm_20_per = false; }
+
         sleep(INTERVAL_SEC);
     }
 }
