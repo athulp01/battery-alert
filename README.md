@@ -4,7 +4,7 @@ Send notification when battery falls below critical level.
 
 ## Installation Instructions
 1. Make sure you have a notification daemon running.
-2. `$ cargo build -release`
+2. `$ cargo build -release` or download the binary from release.
 3. Modify the .service file to the binary path.
 4. Copy the .service file to ~/.config/systemd/user
 5. `$ systemctl enable bat-notify && systemctl start bat-notify`
